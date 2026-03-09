@@ -124,6 +124,12 @@ p {
     /* Subtle depth */
 }
 
+@media (max-width: 480px) {
+    .logo-text {
+        font-size: 1.8rem;
+    }
+}
+
 .logo-text:hover {
     color: var(--accent);
     transform: scale(1.05);
@@ -269,37 +275,54 @@ nav a:focus::after {
     z-index: 1;
     max-width: 800px;
     margin: 0 auto;
-    padding-top: 80px;
+    padding-top: clamp(60px, 15vh, 120px);
     color: var(--white);
 }
 
 .hero h1 {
-    font-size: clamp(2.2rem, 6vw, 4.5rem);
+    font-size: clamp(2.2rem, 8vw, 4.5rem);
     margin-bottom: 0.5rem;
     letter-spacing: 2px;
     text-indent: 2px;
-    /* Pulls the first char 2px right to perfectly balance the right letter-spacing */
     color: var(--white);
-    white-space: nowrap;
-    line-height: 1.2;
+    line-height: 1.1;
 }
 
 .hero-subtitle {
-    font-size: clamp(0.85rem, 2vw, 1.1rem);
+    font-size: clamp(0.75rem, 2vw, 1.1rem);
     text-transform: uppercase;
-    letter-spacing: 4px;
-    text-indent: 4px;
-    /* Perfectly balances the right letter-spacing */
+    letter-spacing: clamp(2px, 1vw, 4px);
+    text-indent: clamp(2px, 1vw, 4px);
     margin-bottom: 2rem;
     font-weight: 500;
     color: var(--white);
     opacity: 0.9;
     text-align: center;
     width: 100%;
-    max-width: fit-content;
     margin-inline: auto;
-    white-space: nowrap;
-    /* Prevent the awkward wrapping seen in screenshot */
+}
+
+@media (min-width: 600px) {
+    .hero h1 {
+        white-space: nowrap;
+    }
+
+    .hero-subtitle {
+        white-space: nowrap;
+        max-width: fit-content;
+    }
+}
+
+@media (max-width: 599px) {
+    .hero-subtitle {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .subtitle-separator {
+        display: none;
+    }
 }
 
 .subtitle-separator {
@@ -595,7 +618,7 @@ section {
     margin: 0;
     color: var(--white);
     overflow-wrap: break-word;
-    word-break: break-word;
+    word-break: break-all;
 }
 
 /* Modern Form */
