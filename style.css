@@ -690,6 +690,11 @@ section {
     box-shadow: 0 0 0 3px rgba(178, 139, 106, 0.2);
 }
 
+/* Anti-spam field */
+input[name="_gotcha"] {
+    display: none !important;
+}
+
 /* Footer */
 footer {
     padding: 2rem 0;
