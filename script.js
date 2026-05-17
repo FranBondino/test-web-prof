@@ -2,14 +2,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Sticky Navbar on Scroll
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.style.padding = '0.5rem 0';
-            // navbar.style.background = 'rgba(244, 239, 234, 0.98)';
-            navbar.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.05)';
+        if (window.scrollY > 20) {
+            navbar.classList.add('scrolled');
         } else {
-            navbar.style.padding = '1rem 0';
-            // navbar.style.background = 'rgba(244, 239, 234, 0.85)';
-            navbar.style.boxShadow = 'none';
+            navbar.classList.remove('scrolled');
         }
     });
 
@@ -57,8 +53,9 @@ document.addEventListener('DOMContentLoaded', () => {
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = contactForm.querySelector('button');
-            const originalText = btn.textContent;
-            btn.textContent = 'Enviando...';
+            const span = btn.querySelector('span');
+            const originalText = span.textContent;
+            span.textContent = 'Enviando...';
             btn.disabled = true;
 
             const formData = new FormData(contactForm);
@@ -81,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } catch (error) {
                 alert('Ups... Hubo un problema al enviar tu mensaje. Por favor, intentá de nuevo.');
             } finally {
-                btn.textContent = originalText;
+                span.textContent = originalText;
                 btn.disabled = false;
             }
         });
